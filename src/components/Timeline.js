@@ -51,9 +51,11 @@ class Timeline extends Component {
         <div
           className="timeline__fill"
           style={{
-            width: `${this.calculateDateOffset(this.state.currentDate) * 100}%`
+            width: `${this.calculateDateOffset(this.state.currentDate) * 100}%`,
           }}
-        />
+        >
+          <img className="timeline__shine" src="shine.png" alt="" />
+        </div>
 
         {_.map(this.props.events, (event, index) => (
           <Marker
