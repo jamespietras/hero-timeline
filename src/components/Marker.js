@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import cx from 'classnames';
 import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
@@ -14,6 +15,11 @@ const propTypes = {
   }).isRequired,
   isActive: PropTypes.bool.isRequired,
   offset: PropTypes.number.isRequired,
+  onClick: PropTypes.func,
+};
+
+const defaultProps = {
+  onClick: _.noop,
 };
 
 class Marker extends Component {
@@ -38,6 +44,7 @@ class Marker extends Component {
           marker: true,
           'marker--active': this.props.isActive,
         })}
+        onClick={this.props.onClick}
         onMouseEnter={() => this.changePopoverVisibility(true)}
         onMouseLeave={() => this.changePopoverVisibility(false)}
         style={{ left: `${this.props.offset * 100}%` }}
@@ -64,5 +71,6 @@ class Marker extends Component {
 }
 
 Marker.propTypes = propTypes;
+Marker.defaultProps = defaultProps;
 
 export default Marker;

@@ -27,6 +27,7 @@ class Timeline extends Component {
 
     this.calculateDateOffset = this.calculateDateOffset.bind(this);
     this.checkIfPastCurrentDate = this.checkIfPastCurrentDate.bind(this);
+    this.moveToDate = this.moveToDate.bind(this);
   }
 
   calculateDateOffset(markerDate) {
@@ -38,6 +39,10 @@ class Timeline extends Component {
 
   checkIfPastCurrentDate(markerDate) {
     return markerDate <= this.state.currentDate;
+  }
+
+  moveToDate(markerDate) {
+    this.setState({ currentDate: markerDate });
   }
 
   render() {
@@ -56,6 +61,7 @@ class Timeline extends Component {
             event={event}
             isActive={this.checkIfPastCurrentDate(event.date)}
             offset={this.calculateDateOffset(event.date)}
+            onClick={() => this.moveToDate(event.date)}
           />
         ))}
       </div>
