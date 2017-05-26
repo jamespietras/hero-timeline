@@ -12,15 +12,16 @@
 .marker::after {
   background: linear-gradient(to bottom, #73d2ab 11%,#56b08b 100%);
   border-radius: 50%;
+  box-shadow: 0px -1px 1px 0px #fff;
   content: '';
-  height: 30px;
+  height: 32px;
   left: 50%;
   opacity: 0;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   transition: opacity .5s;
-  width: 30px;
+  width: 32px;
   z-index: 1;
 }
 
@@ -36,4 +37,62 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+}
+
+.marker__popover {
+  background-color: #fff;
+  border: 1px solid #73d2ab;
+  bottom: 100%;
+  color: #122244;
+  font-size: 12px;
+  left: 50%;
+  margin-bottom: 10px;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  transition: opacity .5s;
+  width: 120px;
+}
+
+.marker__popover--open {
+  opacity: 1;
+}
+
+.marker__popover::before {
+  border-color: #73d2ab transparent transparent transparent;
+  border-style: solid;
+  border-width: 7.8px 4.5px 0 4.5px;
+  content: '';
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0;
+}
+
+.marker__popover::after {
+  border-color: #fff transparent transparent transparent;
+  border-style: solid;
+  border-width: 6.1px 3.5px 0 3.5px;
+  content: '';
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0;
+}
+
+.marker__popover-date {
+  border-bottom: 1px solid #73d2ab;
+  display: block;
+  font-weight: 700;
+  padding: 6px 0;
+}
+
+.marker__popover-name {
+  padding: 0 10px;
+  text-transform: uppercase;
 }
