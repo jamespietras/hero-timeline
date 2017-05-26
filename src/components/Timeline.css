@@ -1,0 +1,35 @@
+.timeline {
+  background-color: #122244;
+  border-radius: 5px;
+  height: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.timeline::before {
+  background-image: url('shine-large.png');
+  bottom: 100%;
+  content: '';
+  height: 42px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.timeline__fill {
+  background: linear-gradient(to bottom, #75d8ff 0%,#2f5a7e 100%);
+  border-radius: 3px;
+  height: 10px;
+  left: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: width 2s;
+}
+
+.timeline__shine {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
