@@ -1,0 +1,39 @@
+.marker {
+  background-color: #122244;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+}
+
+.marker::after {
+  background: linear-gradient(to bottom, #73d2ab 11%,#56b08b 100%);
+  border-radius: 50%;
+  content: '';
+  height: 30px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .5s;
+  width: 30px;
+  z-index: 1;
+}
+
+.marker:hover::after {
+  opacity: 1;
+}
+
+.marker__icon {
+  color: #fff;
+  font-size: 18px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}

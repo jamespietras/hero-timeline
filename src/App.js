@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import data from './data.json';
 import Timeline from './components/Timeline';
 
+import './App.css';
+
 function parseEvents(events) {
   return _.map(events, entry => ({
     date: moment(entry[0], 'DD.MM.YYYY'),
@@ -24,7 +26,9 @@ class App extends Component {
 
   render() {
     return (
-      <Timeline events={this.state.events} />
+      <div className="app">
+        <Timeline events={this.state.events} />
+      </div>
     );
   }
 }
