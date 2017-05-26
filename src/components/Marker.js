@@ -1,28 +1,24 @@
-import _ from 'lodash';
+import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Marker from './Marker';
-
 const propTypes = {
-  events: PropTypes.arrayOf(PropTypes.shape({
+  event: PropTypes.shape({
     date: PropTypes.instanceOf(moment).isRequired,
     icon: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-  })).isRequired,
+  }).isRequired,
 };
 
-function Timeline(props) {
+function Marker(props) {
   return (
     <div>
-      {_.map(props.events, event => (
-        <Marker event={event} />
-      ))}
+      <FontAwesome name={props.event.icon} />
     </div>
   );
 }
 
-Timeline.propTypes = propTypes;
+Marker.propTypes = propTypes;
 
-export default Timeline;
+export default Marker;
