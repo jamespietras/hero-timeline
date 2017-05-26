@@ -12,6 +12,7 @@ const propTypes = {
     icon: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  isActive: PropTypes.bool.isRequired,
   offset: PropTypes.number.isRequired,
 };
 
@@ -33,7 +34,10 @@ class Marker extends Component {
   render() {
     return (
       <div
-        className="marker"
+        className={cx({
+          marker: true,
+          'marker--active': this.props.isActive,
+        })}
         onMouseEnter={() => this.changePopoverVisibility(true)}
         onMouseLeave={() => this.changePopoverVisibility(false)}
         style={{ left: `${this.props.offset * 100}%` }}

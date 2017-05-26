@@ -20,26 +20,43 @@ class Timeline extends Component {
     super(props);
 
     this.state = {
-      // currentDate: moment('10.06.2015', 'DD.MM.YYYY'),
+      currentDate: moment('10.06.2015', 'DD.MM.YYYY'),
       endDate: moment('30.06.2015', 'DD.MM.YYYY'),
       startDate: moment('01.06.2015', 'DD.MM.YYYY'),
     };
 
-    this.calculateMarkerOffset = this.calculateMarkerOffset.bind(this);
+    this.calculateDateOffset = this.calculateDateOffset.bind(this);
+    this.checkIfPastCurrentDate = this.checkIfPastCurrentDate.bind(this);
   }
 
-  calculateMarkerOffset(markerDate) {
+  calculateDateOffset(markerDate) {
     const difference = markerDate - this.state.startDate;
     const total = this.state.endDate - this.state.startDate;
 
     return difference / total;
   }
 
+  checkIfPastCurrentDate(markerDate) {
+    return markerDate <= this.state.currentDate;
+  }
+
   render() {
     return (
       <div className="timeline">
+        <div
+          className="timeline__fill"
+          style={{
+            width: `${this.calculateDateOffset(this.state.currentDate) * 100}%`
+          }}
+        />
+
         {_.map(this.props.events, (event, index) => (
-          <Marker key={index} event={event} offset={this.calculateMarkerOffset(event.date)} />
+          <Marker
+            key={index}
+            event={event}
+            isActive={this.checkIfPastCurrentDate(event.date)}
+            offset={this.calculateDateOffset(event.date)}
+          />
         ))}
       </div>
     );
