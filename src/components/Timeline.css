@@ -8,9 +8,11 @@
 
 .timeline::before {
   background-image: url('shine-large.png');
-  bottom: 100%;
+  background-position: center;
+  background-size: 100% 100%;
+  bottom: 0;
   content: '';
-  height: 42px;
+  height: 52px;
   left: 0;
   position: absolute;
   width: 100%;
@@ -29,7 +31,25 @@
 
 .timeline__shine {
   left: 50%;
+  max-width: 100%;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 1024px) {
+  .timeline {
+    background-color: transparent;
+    height: auto;
+    margin: 0 auto;
+    max-width: 300px;
+    padding: 0 20px;
+    width: auto;
+  }
+
+  .timeline::before,
+  .timeline__fill,
+  .timeline__shine {
+    display: none;
+  }
 }
