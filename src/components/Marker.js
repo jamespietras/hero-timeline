@@ -40,16 +40,20 @@ class Marker extends Component {
   render() {
     return (
       <div
-        className={cx({
-          marker: true,
-          'marker--active': this.props.isActive,
-        })}
+        className="marker"
         onClick={this.props.onClick}
         onMouseEnter={() => this.changePopoverVisibility(true)}
         onMouseLeave={() => this.changePopoverVisibility(false)}
         style={{ left: `${this.props.offset * 100}%` }}
       >
-        <FontAwesome className="marker__icon" name={this.props.event.icon} />
+        <div
+          className={cx({
+            marker__circle: true,
+            'marker__circle--active': this.props.isActive,
+          })}
+        >
+          <FontAwesome className="marker__icon" name={this.props.event.icon} />
+        </div>
 
         <div
           className={cx({
