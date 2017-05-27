@@ -1,0 +1,164 @@
+.marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.marker__circle {
+  background-color: #122244;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 40px;
+  position: relative;
+  width: 40px;
+}
+
+.marker__circle::after {
+  background: linear-gradient(to bottom, #75d8ff 0%,#2f5a7e 100%);
+  border-radius: 50%;
+  content: '';
+  height: 30px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .5s;
+  width: 30px;
+  z-index: 1;
+}
+
+.marker__circle:hover::after {
+  background: linear-gradient(to bottom, #73d2ab 11%,#56b08b 100%);
+  opacity: 1;
+}
+
+.marker__circle--active::after {
+  opacity: 1;
+}
+
+.marker__circle--active .marker__icon {
+  color: #122244;
+}
+
+.marker__icon {
+  color: #fff;
+  font-size: 18px;
+  left: 50%;
+  margin-top: 1px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: color .5s;
+  z-index: 2;
+}
+
+.marker__popover {
+  background-color: #fff;
+  border: 1px solid #73d2ab;
+  bottom: 100%;
+  color: #122244;
+  font-size: 12px;
+  left: 50%;
+  margin-bottom: 10px;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  transition: opacity .5s;
+  width: 120px;
+}
+
+.marker__popover--open {
+  opacity: 1;
+}
+
+.marker__popover::before {
+  border-color: #73d2ab transparent transparent transparent;
+  border-style: solid;
+  border-width: 7.8px 4.5px 0 4.5px;
+  content: '';
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0;
+}
+
+.marker__popover::after {
+  border-color: #fff transparent transparent transparent;
+  border-style: solid;
+  border-width: 6.1px 3.5px 0 3.5px;
+  content: '';
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0;
+}
+
+.marker__popover-date {
+  border-bottom: 1px solid #73d2ab;
+  display: block;
+  font-weight: 700;
+  padding: 6px 0;
+}
+
+.marker__popover-name {
+  padding: 0 10px;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1024px) {
+  .marker {
+    margin-bottom: 15px;
+    position: static;
+    transform: none;
+  }
+
+  .marker__circle {
+    display: inline-block;
+  }
+
+  .marker__circle::after,
+  .marker__circle:hover::after {
+    background: transparent;
+  }
+
+  .marker__circle--active::after,
+  .marker__circle--active:hover::after {
+    background: linear-gradient(to bottom, #75d8ff 0%,#2f5a7e 100%);
+  }
+
+  .marker__popover {
+    border: none;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 12px;
+    opacity: 1;
+    position: static;
+    text-align: left;
+    transform: none;
+    vertical-align: top;
+    width: calc(100% - 52px);
+  }
+
+  .marker__popover::after,
+  .marker__popover::before {
+    display: none;
+  }
+
+  .marker__popover-date {
+    border-bottom: none;
+    display: block;
+    font-weight: 700;
+  }
+
+  .marker__popover-name {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+  }
+}
